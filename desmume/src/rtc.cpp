@@ -96,10 +96,10 @@ bool moviemode=false;
 
 DateTime rtcGetTime(void)
 {
-	if(movieMode == MOVIEMODE_INACTIVE) {
-		return DateTime::get_Now().AddHours(rtcHourOverride);
-	}
-	else {
+	// if(movieMode == MOVIEMODE_INACTIVE) {
+		// return DateTime::get_Now().AddHours(rtcHourOverride);
+	// }
+	// else {
 		//now, you might think it is silly to go through all these conniptions
 		//when we could just assume that there are 60fps and base the seconds on frameCounter/60
 		//but, we were imagining that one day we might need more precision
@@ -109,10 +109,10 @@ DateTime rtcGetTime(void)
 
 		u64 totalcycles = (u64)arm9rate_unitsperframe * currFrameCounter;
 		u64 totalseconds=totalcycles/arm9rate_unitspersecond;
-
+		
 		DateTime timer = currMovieData.rtcStart;
 		return timer.AddSeconds(totalseconds);
-	}
+	// }
 }
 
 void rtcGetTimeAsString(char *buffer)
